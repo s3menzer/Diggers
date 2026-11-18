@@ -1,4 +1,3 @@
-*
 !.gitignore
 !*.md
 !*.json
@@ -23,3 +22,4 @@
 !docs/*.png
 !docs/*.ico
 !docs/*.webp
+/graft
