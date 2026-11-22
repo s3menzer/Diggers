@@ -12,8 +12,8 @@
 -- Core function aliases --------------------------------------------------- --
 local cos<const>, sin<const> = math.cos, math.sin;
 -- Engine function aliases ------------------------------------------------- --
-local CoreGetTime<const>, UtilFormatNTime<const> =
-  Core.GetTime, Util.FormatNTime;
+local CoreCatchup<const>, CoreGetTime<const>, UtilFormatNTime<const> =
+  Core.Catchup, Core.GetTime, Util.FormatNTime;
 -- Diggers function and data aliases --------------------------------------- --
 local BlitSLTWHA, GetKeyName, InitContinueGame, PlayStaticSound, PrintC,
   RegisterFBUCallback, RenderAll, RenderFade, RenderTip, SetCallbacks,
@@ -36,6 +36,8 @@ local sSmallTips;                      -- Small instructions text
 local texSpr;                          -- Sprite texture
 -- Continue game callback -------------------------------------------------- --
 local function ContinueGame()
+  -- Discard any elapsed frame time accumulated while the game was paused.
+  CoreCatchup();
   -- Play click sound and continue game
   PlayStaticSound(iSClick);
   InitContinueGame(true);

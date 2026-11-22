@@ -4828,6 +4828,8 @@ local function OnPreInitAPI(GetAPI)
     local function PostLoaded()
       -- We want to hear sounds
       SetPlaySounds(true);
+      -- Discard time spent loading before gameplay resumes.
+      Core.Catchup();
       -- Return control to main loop
       SetCallbacks(fcbLogic, fcbRender);
       -- Restore key bank keys and hot spots
